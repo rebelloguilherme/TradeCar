@@ -42,7 +42,7 @@ namespace RentACar.WebUI.Controllers
             return View(marca);
         }
 
-        [HttpGet()]
+        [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
             if (id == null)
