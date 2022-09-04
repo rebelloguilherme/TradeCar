@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RentACar.Application.DTOs;
 using RentACar.Application.Interfaces;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RentACar.WebUI.Controllers
@@ -36,6 +37,14 @@ namespace RentACar.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                var marcasJaCadastradas = await _marcaService.GetMarcas();
+                foreach (var marcaCadastrada in marcasJaCadastradas)
+                {
+                    if(marcaCadastrada.Nome.ToUpper().Trim() == marca.Nome.ToUpper().Trim())
+                    {
+                        return BadRequest("Marca já existente");
+                    }
+                }
                 await _marcaService.Add(marca);
                 return RedirectToAction(nameof(Index));
             }
