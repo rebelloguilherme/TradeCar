@@ -16,7 +16,8 @@ namespace RentACar.Infra.Data.EntitiesConfiguration
             builder.Property(x => x.Status).IsRequired();
             builder.Property(x => x.Documento).HasMaxLength(100).IsRequired();
             builder.Property(x => x.Email).HasMaxLength(100).IsRequired();
-            builder.Property(x => x.Endereco).HasMaxLength(200).IsRequired();
+
+            builder.HasOne(x => x.Endereco).WithOne(x => x.Proprietario).HasForeignKey<Endereco>(x => x.ProprietarioId);
 
         }
     }

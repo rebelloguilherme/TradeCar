@@ -1,1 +1,73 @@
-﻿
+﻿@using RentACar.WebUI.Helpers
+@using RentACar.Domain.Entities
+@model IEnumerable<RentACar.Application.DTOs.ProprietarioDTO>
+
+@{
+    ViewData["Title"] = "Gerenciamento de Proprietários";
+}
+
+<style>
+    .modal-lg {
+        max-width: 80%;
+    }
+</style>
+
+<div>
+    <h2>@ViewData["Title"]</h2>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <div class="pull-left">
+                <a asp-action="Create" class="btn btn-primary">
+                    <span title="Novo" class="fas fa-plus">
+                    </span> Novo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="panel panel-default">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Documento
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Ações
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Documento)
+                    </td>
+                    <td>
+                        @item.Status.GetDisplayName()
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" title="Editar" class="btn btn-warning">
+                            <span class="fas fa-edit">Edit</span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

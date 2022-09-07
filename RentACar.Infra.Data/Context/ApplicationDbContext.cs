@@ -14,6 +14,9 @@ namespace RentACar.Infra.Data.Context
         public DbSet<Marca> Marcas { get; set; }
         public DbSet<Veiculo> Veiculos { get; set; }
         public DbSet<Proprietario> Proprietarios { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
