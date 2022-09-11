@@ -17,13 +17,13 @@ namespace RentACar.Domain.Entities
         {
 
         }
-        public Proprietario(string nome, StatusCadastro status, string documento, string email)
+        public Proprietario(string nome, StatusCadastro status, string documento, string email, Endereco endereco)
         {
-            ValidateDomain(nome, status, documento, email);
+            ValidateDomain(nome, status, documento, email, endereco);
         }
 
 
-        private void ValidateDomain(string nome, StatusCadastro status, string documento, string email)
+        private void ValidateDomain(string nome, StatusCadastro status, string documento, string email, Endereco endereco)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(nome), "Proprietário não pode ser nulo ou em branco");
             DomainExceptionValidation.When(string.IsNullOrEmpty(documento), "Documento não pode ser nulo ou em branco");
@@ -33,6 +33,7 @@ namespace RentACar.Domain.Entities
             Status = status;
             Documento = documento;
             Email = email;
+            Endereco = endereco;
         }
     }
 }

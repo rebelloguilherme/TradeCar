@@ -10,19 +10,18 @@ namespace RentACar.Application.DTOs
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Necessário informar o Nome")]
-        public string Nome { get; private set; }
+        public string Nome { get; set; }
 
         [Required(ErrorMessage = "Necessário informar o Status")]
-        public StatusCadastro Status { get; private set; }
+        public StatusCadastro Status { get; set; }
 
         [Required(ErrorMessage = "Necessário informar o Documento")]
-        public string Documento { get; private set; }
+        public string Documento { get; set; }
 
         [Required(ErrorMessage = "Necessário informar o Email")]
-        public string Email { get; private set; }
+        public string Email { get; set; }
 
-        [Required(ErrorMessage = "Necessário informar o Endereço")]
-        public string Endereco { get; private set; }
+        public Endereco Endereco { get; set; }
         public ICollection<Veiculo> Veiculos { get; set; }
     }
 }

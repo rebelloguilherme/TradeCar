@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentACar.Application.DTOs;
 using RentACar.Application.Interfaces;
 using System;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace RentACar.WebUI.Controllers
 {
+    [Authorize]
     public class ProprietarioController : Controller
     {
         private readonly IProprietarioService _proprietarioService;
@@ -28,7 +30,7 @@ namespace RentACar.WebUI.Controllers
             return View();
         }
 
-        [HttpPost()]
+        [HttpPost]
         public async Task<IActionResult> Create(ProprietarioDTO proprietario)
         {
             if (ModelState.IsValid)
@@ -39,7 +41,7 @@ namespace RentACar.WebUI.Controllers
             return View(proprietario);
         }
 
-        [HttpGet()]
+        [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
             if (id == null)
@@ -54,7 +56,7 @@ namespace RentACar.WebUI.Controllers
             return View(proprietario);
         }
 
-        [HttpPost()]
+        [HttpPost]
         public async Task<IActionResult> Edit(ProprietarioDTO proprietario)
         {
             if (ModelState.IsValid)

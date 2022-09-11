@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using RentACar.Application.DTOs;
 using RentACar.Application.Interfaces;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RentACar.WebUI.Controllers
